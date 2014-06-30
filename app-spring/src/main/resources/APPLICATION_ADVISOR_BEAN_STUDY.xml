@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/util 
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<!-- 普通方法名匹配切面 -->
+	<bean id="waiterTarget" class="com.jomolangma.app.spring.advisor.Waiter" />
+	<bean id="sellerTarget" class="com.jomolangma.app.spring.advisor.Seller" />
+	<bean id="greetingAdvice" class="com.jomolangma.app.spring.advisor.GreetingBeforeAdvice" />
+	<bean id="greetingAdvisor" class="com.jomolangma.app.spring.advisor.GreetingAdvisor"
+		p:advice-ref="greetingAdvice" />
+
+	<bean id="parent" abstract="true"
+		class="org.springframework.aop.framework.ProxyFactoryBean"
+		p:interceptorNames="greetingAdvisor" p:proxyTargetClass="true" />
+		
+	<bean id="waiter" parent="parent" p:target-ref="waiterTarget" />
+	<bean id="seller" parent="parent" p:target-ref="sellerTarget" />
+</beans>

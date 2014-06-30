@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.jomolangma.app</groupId>
+		<artifactId>app</artifactId>
+		<version>1.0.0.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<artifactId>app-quartz</artifactId>
+	<packaging>jar</packaging>
+	<name>QuartzApp</name>
+
+	<dependencies>
+		<!-- Junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>org.quartz-scheduler</groupId>
+    		<artifactId>quartz</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>org.quartz-scheduler</groupId>
+    		<artifactId>quartz-oracle</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>org.quartz-scheduler</groupId>
+    		<artifactId>quartz-jboss</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>app-quartz</finalName>
+		<filters>
+		</filters>
+		<plugins>
+		</plugins>
+	</build>
+</project>

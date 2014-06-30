@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="greetingBefore" class="com.jomolangma.app.spring.advice.GreetingBeforeAdvice" />
+	<bean id="greetingAfter" class="com.jomolangma.app.spring.advice.GreetingAfterAdvice" />
+	<bean id="greetingAdvice" class="com.jomolangma.app.spring.advice.GreetingBeforeAdvice" />
+	<bean id="greetingAround" class="com.jomolangma.app.spring.advice.GreetingInterceptor" />
+	<bean id="target" class="com.jomolangma.app.spring.advice.NaiveWaiter" />
+
+	<!--1. greetingAdvice -->
+	<bean id="waiter1"
+		class="org.springframework.aop.framework.ProxyFactoryBean"
+		p:proxyInterfaces="com.jomolangma.app.spring.advice.Waiter"
+		p:interceptorNames="greetingAdvice,greetingAfter"
+		p:target-ref="target" />
+</beans>

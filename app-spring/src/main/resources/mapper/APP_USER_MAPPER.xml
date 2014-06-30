@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.jomolangma.app.spring.web.domain.User">
+	<resultMap id="userList" type="User" >
+		<id property="id" column="id" />
+		<result property="name" column="name" jdbcType="VARCHAR" />
+		<result property="password" column="password" jdbcType="VARCHAR" />
+		<result property="credits" column="credits" jdbcType="INTEGER" />
+		<result property="lastIp" column="last_ip" jdbcType="VARCHAR" />
+		<result property="lastVisit" column="last_visit" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<sql id="userColum">
+		id,name,password,credits,last_ip,last_visit
+	</sql>
+	
+	<select id="getUserById" parameterType="int" resultMap="userList">
+		SELECT
+		<include refid="userColum"/>
+		FROM T_USER
+    	<where>
+    		id = #{id,jdbcType=INTEGER}
+    	</where>
+	</select>
+	
+	<select id="findUserByName" parameterType="String" resultMap="userList">
+		SELECT
+		<include refid="userColum"/>
+		FROM T_USER
+    	<where>
+    		name = #{name,jdbcType=VARCHAR}
+    	</where>
+	</select>
+	
+	<select id="getMatchCount" parameterType="HashMap" resultMap="userList">
+		select
+		<include refid="userColum"/>
+		from t_user
+    	<where>
+    		name = #{name,jdbcType=VARCHAR}
+    		and password = #{password,jdbcType=VARCHAR}
+    	</where>
+	</select>
+	
+	<update id="updateUser" parameterType="User">
+		update t_user
+		<set>
+			credits = #{credits,jdbcType=INTEGER},
+		</set>
+		<where>
+			id = #{id}
+		</where>
+	</update>
+	
+	<insert id="createUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO T_USER
+		(
+			name,
+			password,
+			credits,
+			last_ip,
+			last_visit
+		)
+		values
+		(
+			#{name},
+			#{password},
+			#{credits},
+			#{lastIp},
+			#{lastVisit}
+		)
+	</insert>
+</mapper>

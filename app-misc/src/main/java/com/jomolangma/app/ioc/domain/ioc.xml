@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<bean id="person" class="com.jomolangma.app.ioc.domain.Person" >
+		<property name="name" value="zhanglijun" />
+		<property name="address" ref="address" />
+	</bean>
+	
+	<bean id="address" class="com.jomolangma.app.ioc.domain.Address" >
+		<property name="nationality" value="China" />
+		<property name="city" value="Hangzhou" />
+		<property name="street" value="Fengqing Avenue" />
+	</bean>
+	
+	<bean id="user" class="com.jomolangma.app.ioc.domain.User" >
+		<property name="id" value="123456" />
+		<property name="name" value="ZhangLijun" />
+	</bean>
+</beans>
