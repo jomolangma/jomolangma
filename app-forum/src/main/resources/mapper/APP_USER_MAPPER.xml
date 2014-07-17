@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.jomolangma.app.spring.web.domain.User">
+	<resultMap id="userList" type="User" >
+		<id property="id" column="user_id" />
+		<result property="name" column="user_name" jdbcType="VARCHAR" />
+		<result property="password" column="password" jdbcType="VARCHAR" />
+		<result property="credits" column="credits" jdbcType="INTEGER" />
+		<result property="lastIp" column="last_ip" jdbcType="VARCHAR" />
+		<result property="lastVisit" column="last_visit" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<sql id="userColum">
+		user_id,user_name,password,credits,last_ip,last_visit
+	</sql>
+	
+	<select id="findUserByName" parameterType="String" resultMap="userList">
+		SELECT
+		<include refid="userColum"/>
+		FROM T_USER
+    	<where>
+    		user_name = #{name,jdbcType=VARCHAR}
+    	</where>
+	</select>
+	
+	<select id="findUserByNameAndPassword" parameterType="HashMap" resultMap="userList">
+		select
+		<include refid="userColum"/>
+		from t_user
+    	<where>
+    		user_name = #{name,jdbcType=VARCHAR}
+    		and password = #{password,jdbcType=VARCHAR}
+    	</where>
+	</select>
+	
+	<update id="updateUser" parameterType="User">
+		update t_user
+		<set>
+			credits = #{credits,jdbcType=INTEGER},
+		</set>
+		<where>
+			user_id = #{id}
+		</where>
+	</update>
+</mapper>

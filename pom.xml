@@ -18,7 +18,7 @@
 		<module>app-mybatis</module>
 		<module>app-misc</module>
 		<module>app-restful</module>
-		<module>app-bookstore</module>
+		<module>app-forum</module>
 	</modules>
 
 	<properties>
@@ -38,7 +38,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.jomolangma.app</groupId>
-				<artifactId>app-bookstore</artifactId>
+				<artifactId>app-forum</artifactId>
 				<version>${app-version}</version>
 			</dependency>
 			<dependency>
