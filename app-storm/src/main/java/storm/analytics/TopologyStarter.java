@@ -15,7 +15,6 @@ public class TopologyStarter {
 	public static boolean testing = false;
 
 	public static void main(String[] args) {
-        Logger.getRootLogger().removeAllAppenders();
 
 		TopologyBuilder builder = new TopologyBuilder();
         
