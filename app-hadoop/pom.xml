@@ -103,11 +103,6 @@
 			<artifactId>hadoop-yarn-server-resourcemanager</artifactId>
 			<version>${hadoop-version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-hdfs-httpfs</artifactId>
-			<version>${hadoop-version}</version>
-		</dependency>
 	</dependencies>
 
 	<build>
