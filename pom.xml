@@ -23,7 +23,7 @@
 
 	<properties>
 		<app-version>${project.version}</app-version>
-		<springVersion>4.0.5.RELEASE</springVersion>
+		<springVersion>4.1.2.RELEASE</springVersion>
 		<jerseyVersion>2.5.1</jerseyVersion>
 		<hibernateVersion>4.2.6.Final</hibernateVersion>
 		<cxfVersion>3.0.0</cxfVersion>
@@ -409,14 +409,6 @@
 					</archive>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>tomcat-maven-plugin</artifactId>
-				<version>1.1</version>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
-			</plugin>
 		</plugins>
 
 		<resources>
@@ -475,16 +467,5 @@
 			</testResource>
 		</testResources>
 	</build>
-
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>emma-maven-plugin</artifactId>
-				<version>1.0-alpha-3</version>
-				<inherited>true</inherited>
-			</plugin>
-		</plugins>
-	</reporting>
 </project>
  
