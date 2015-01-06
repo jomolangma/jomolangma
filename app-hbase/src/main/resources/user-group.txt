@@ -1,0 +1,5 @@
+{"common":{"age":"(1,100)","gender":"M","salary":"(1,1000000}"},"groupName":"group-A","hotspots":["野马GT350"],"regions":["周末宅","上班族"],"taglibs":["tag1","tag5"]}
+{"common":{"age":"{1,100}","gender":"F","salary":"(1,1000000}"},"groupName":"group-B","hotspots":["野马GT350"],"regions":["周末宅","上班族"],"taglibs":["tag2","tag3"]}
+{"common":{"age":"{1,100)","gender":"M","salary":"{1,1000000}"},"groupName":"group-C","hotspots":["野马GT350"],"regions":["周末宅","上班族"],"taglibs":["tag4","tag8"]}
+{"common":{"age":"{10,80)","salary":"(1,1000000}"},"groupName":"group-D","hotspots":["野马GT350"],"regions":["周末宅","上班族"],"taglibs":["tag7","tag6"]}
+{"common":{"age":"{10,80)","gender":"F","salary":"(1,1000000}"},"groupName":"group-E","hotspots":["野马GT350"],"regions":["周末宅","上班族"],"taglibs":["tag9","tag1"]}
