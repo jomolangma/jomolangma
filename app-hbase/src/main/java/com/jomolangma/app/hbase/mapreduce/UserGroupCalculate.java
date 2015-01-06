@@ -1,6 +1,6 @@
 package com.jomolangma.app.hbase.mapreduce;
 
-import com.chinamobile.usergroup.analysis.domain.UserGroup;
+import com.jomolangma.app.hbase.domain.UserGroup;
 import net.sf.json.JSONObject;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
@@ -19,10 +19,10 @@ import org.slf4j.LoggerFactory;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
+import java.util.Map;
+import java.util.HashMap;
 
 public class UserGroupCalculate {
 
