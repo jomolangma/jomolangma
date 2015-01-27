@@ -11,7 +11,7 @@ public class InDecodeTest {
 		String encode = URLEncoder.encode("测试1","GBK") ;
 		System.out.println(encode);
 
-		String decode = URLDecoder.decode(encode,"ISO-8859-1");
+		String decode = URLDecoder.decode("%E6%B5%B7%E5%B0%94","utf8");
 		System.out.println(decode);
 	}
 

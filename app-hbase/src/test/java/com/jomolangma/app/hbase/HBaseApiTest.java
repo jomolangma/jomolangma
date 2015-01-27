@@ -1,23 +1,24 @@
-package com.jomolangma.app.hbase.util;
+package com.jomolangma.app.hbase;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.HRegionInfo;
 import org.apache.hadoop.hbase.HRegionLocation;
 import org.apache.hadoop.hbase.client.HTable;
+import org.junit.Test;
 
 import java.io.IOException;
 
-public class CreateUserGroupTable {
-    public static void main(String[] args) throws IOException {
-        Configuration HBASE_CONFIG = new Configuration();
-        Configuration conf = HBaseConfiguration.create(HBASE_CONFIG);
+/**
+ * Created by zhanglijun on 1/7/15.
+ */
+public class HBaseApiTest {
+    @Test
+    public void htableTest() throws IOException {
+        Configuration hbase_config = new Configuration();
+        Configuration conf = HBaseConfiguration.create(hbase_config);
 
-//        HBaseHelper helper = HBaseHelper.getHelper(conf);
-//        helper.dropTable("testtable2");
-//        helper.createTable("testtable2", "colf");
-
-        HTable userInfoTable = new HTable(conf,"user_info_table");
+        HTable userInfoTable = new HTable(conf, "user_info_table");
         HRegionLocation regionLocation = userInfoTable.getRegionLocation("0");
 
         System.out.println(regionLocation.getHostname());
@@ -27,8 +28,6 @@ public class CreateUserGroupTable {
         System.out.println(regionInfo.getVersion());
 
 
-
         System.out.println("complete");
     }
-
 }

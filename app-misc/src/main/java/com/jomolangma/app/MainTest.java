@@ -45,7 +45,8 @@ public class MainTest {
 //
 //		System.out.println(df.format(weightResult));
 
-		System.out.println(System.getProperty("user.dir"));
+//		System.out.println(System.getProperty("user.dir"));
+
 	}
 
 }
