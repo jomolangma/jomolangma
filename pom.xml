@@ -336,6 +336,11 @@
 				<version>2.4</version>
 				<classifier>jdk15</classifier>
 			</dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>4.0.25.Final</version>
+            </dependency>
 		</dependencies>
 	</dependencyManagement>
 

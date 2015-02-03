@@ -33,6 +33,10 @@
 			<artifactId>json-lib</artifactId>
 			<classifier>jdk15</classifier>
 		</dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+        </dependency>
 	</dependencies>
 
 	<build>
