@@ -9,8 +9,8 @@
     <name>AppHBase</name>
 
     <properties>
-        <hbaseVersion>0.94.15-cdh4.7.0</hbaseVersion>
-        <hadoopVersion>2.0.0-cdh4.7.0</hadoopVersion>
+        <hadoopVersion>2.5.0-cdh5.2.1</hadoopVersion>
+        <hbaseVersion>0.98.6-cdh5.2.1</hbaseVersion>
     </properties>
 
     <repositories>
