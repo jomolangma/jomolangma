@@ -21,8 +21,11 @@ public class NIOClient {
                 Selector selector = Selector.open();
                 socketChannel.register(selector, SelectionKey.OP_READ);
 
-                ByteBuffer test = ByteBuffer.wrap("versionTest".getBytes());
-                socketChannel.write(test);
+                ByteBuffer buffer = ByteBuffer.allocate(1024);
+                buffer.put("versionTest".getBytes());
+                buffer.flip();
+                socketChannel.write(buffer);
+                buffer.clear();
 
                 if (selector.select() > 0) {
                     // 遍历每个有可用IO操作Channel对应的SelectionKey
@@ -32,7 +35,6 @@ public class NIOClient {
                         if (sk.isReadable()) {
                             // 使用NIO读取Channel中的数据
                             SocketChannel sc = (SocketChannel) sk.channel();
-                            ByteBuffer buffer = ByteBuffer.allocate(1024);
                             sc.read(buffer);
                             buffer.flip();
 
@@ -53,8 +55,11 @@ public class NIOClient {
                     }
                 }
 
-                test = ByteBuffer.wrap("Test".getBytes());
-                socketChannel.write(test);
+                buffer.flip();
+                buffer.put("Test".getBytes());
+                buffer.flip();
+                socketChannel.write(buffer);
+                buffer.clear();
 
                 while (selector.select() > 0) {
                     // 遍历每个有可用IO操作Channel对应的SelectionKey
@@ -64,7 +69,6 @@ public class NIOClient {
                         if (sk.isReadable()) {
                             // 使用NIO读取Channel中的数据
                             SocketChannel sc = (SocketChannel) sk.channel();
-                            ByteBuffer buffer = ByteBuffer.allocate(1024);
                             sc.read(buffer);
                             buffer.flip();
 
