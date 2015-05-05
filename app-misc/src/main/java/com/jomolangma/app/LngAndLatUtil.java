@@ -29,7 +29,7 @@ public class LngAndLatUtil {
             map.put("lng", lng);
             map.put("lat", lat);
         } else {
-            System.out.println("未找到相匹配的经纬度！");
+            System.out.println("未找到相匹配的经纬度");
         }
         return map;
     }
@@ -53,7 +53,7 @@ public class LngAndLatUtil {
     }
 
     public static void main(String args[]){
-        Map<String,Double> map=LngAndLatUtil.getLngAndLat("上海市黄浦区六合路");
-        System.out.println("经度："+map.get("lng")+"---纬度："+map.get("lat"));
+        //Map<String,Double> map=LngAndLatUtil.getLngAndLat("上海市黄浦区六合路");
+        //System.out.println("经度："+map.get("lng")+"---纬度："+map.get("lat"));
     }
 }
