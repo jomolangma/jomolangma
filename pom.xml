@@ -19,6 +19,7 @@
 		<module>app-misc</module>
 		<module>app-restful</module>
 		<module>app-storm</module>
+		<module>app-kafka</module>
 	</modules>
 
 	<properties>
@@ -341,6 +342,11 @@
                 <artifactId>netty-all</artifactId>
                 <version>4.0.25.Final</version>
             </dependency>
+			<dependency>
+				<groupId>org.apache.kafka</groupId>
+				<artifactId>kafka_2.9.2</artifactId>
+				<version>0.8.1.1</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
