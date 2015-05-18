@@ -14,7 +14,6 @@
 	<modules>
 		<module>app-spring</module>
 		<module>app-quartz</module>
-		<module>app-hibernate</module>
 		<module>app-mybatis</module>
 		<module>app-misc</module>
 		<module>app-restful</module>
@@ -26,7 +25,6 @@
 		<app-version>${project.version}</app-version>
 		<springVersion>4.1.2.RELEASE</springVersion>
 		<jerseyVersion>2.5.1</jerseyVersion>
-		<hibernateVersion>4.2.6.Final</hibernateVersion>
 		<cxfVersion>3.0.0</cxfVersion>
 	</properties>
 
@@ -152,26 +150,6 @@
 				<groupId>org.mybatis</groupId>
 				<artifactId>mybatis-spring</artifactId>
 				<version>1.2.2</version>
-			</dependency>
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-core</artifactId>
-				<version>${hibernateVersion}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-entitymanager</artifactId>
-				<version>${hibernateVersion}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-envers</artifactId>
-				<version>${hibernateVersion}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-proxool</artifactId>
-				<version>${hibernateVersion}</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-dbcp</groupId>
