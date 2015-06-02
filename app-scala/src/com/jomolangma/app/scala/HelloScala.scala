@@ -32,7 +32,7 @@ object HelloScala{
   }
 
   def main (args: Array[String]) {
-    //println("Hello Scala!!!")
+    println("Hello Scala!!!")
     //println(hello("Scala"))
     //helloScala()
     //println(add(1,2))
