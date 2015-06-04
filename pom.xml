@@ -41,11 +41,6 @@
             </dependency>
             <dependency>
                 <groupId>com.jomolangma.app</groupId>
-                <artifactId>app-forum</artifactId>
-                <version>${app-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.jomolangma.app</groupId>
                 <artifactId>app-mybatis</artifactId>
                 <version>${app-version}</version>
             </dependency>
