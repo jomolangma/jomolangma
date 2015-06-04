@@ -14,26 +14,46 @@ public class TestMongoDBReplSetReadSplit {
 
         try {
             List<ServerAddress> addresses = new ArrayList<ServerAddress>();
-            ServerAddress address1 = new ServerAddress("192.168.16.3", 27017);
-            ServerAddress address2 = new ServerAddress("192.168.16.4", 27017);
-            ServerAddress address3 = new ServerAddress("192.168.16.5", 27017);
+            ServerAddress address1 = new ServerAddress("192.168.16.2", 27017);
+//            ServerAddress address2 = new ServerAddress("192.168.16.4", 20000);
+//            ServerAddress address3 = new ServerAddress("192.168.16.5", 20000);
+//            addresses.add(address1);
+//            addresses.add(address2);
+//            addresses.add(address3);
+
             addresses.add(address1);
-            addresses.add(address2);
-            addresses.add(address3);
 
             MongoClient client = new MongoClient(addresses);
-            DB db = client.getDB("test");
-            DBCollection coll = db.getCollection("testdb");
+            DB db = client.getDB("cmcc");
+            DBCollection coll = db.getCollection("test");
 
+            //long setHistoryReslut = jedisCluster.hsetnx(HISTORY_ACTIVE_USERS + appID, cid, STR_ONE);
+            List<BasicDBObject> documents = new ArrayList<BasicDBObject>(2000000);
+            for (long i = 10001001000l;i<=20109000000l;i++){
 
-            BasicDBObject object = new BasicDBObject();
-            object.append("test2", "testvalue2");
+                for (int j=1;j<=10000;j++){
+                    BasicDBObject object = new BasicDBObject();
+                    object.append("_id", "app"+j+i);
+                    object.append("value", 1);
 
-            //读操作从副本节点读取
-            ReadPreference preference = ReadPreference.secondary();
-            DBObject dbObject = coll.findOne(object, null, preference);
+                    documents.add(object);
+                }
 
-            System.out.println(dbObject);
+                if (i%100 == 0){
+                    coll.insert(documents);
+                    documents.clear();
+                    System.out.println("total insert documents count: " + (i - 10000000000l)*10000);
+                }
+            }
+
+//                BasicDBObject objectFind = new BasicDBObject();
+//                objectFind.append("_id", 10000000001l);
+//
+//                BasicDBObject objectUpdate = new BasicDBObject("$set",new BasicDBObject().append("cid1", 1));
+//
+//                WriteResult result = coll.update(objectFind,objectUpdate,true,false);
+//
+//                System.out.println(result.isUpdateOfExisting());
 
 
         } catch (Exception e) {
