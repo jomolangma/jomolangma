@@ -13,9 +13,9 @@ import java.util.concurrent.TimeUnit;
  */
 public class NIOClient {
     public static void main(String[] args) {
-        while(true){
+        while (true) {
             try {
-                SocketChannel socketChannel= SocketChannel.open(new InetSocketAddress("127.0.0.1", 12112));
+                SocketChannel socketChannel = SocketChannel.open(new InetSocketAddress("127.0.0.1", 12112));
                 socketChannel.configureBlocking(false);
                 // 打开并注册选择器到信道
                 Selector selector = Selector.open();
@@ -39,9 +39,9 @@ public class NIOClient {
                             buffer.flip();
 
                             // 将字节转化为为UTF-16的字符串
-                            String receivedString= new String(buffer.array());
+                            String receivedString = new String(buffer.array());
 
-                            if (receivedString.equals("versionTest")){
+                            if (receivedString.equals("versionTest")) {
                                 System.out.println("version check passed");
                             }
 
@@ -72,7 +72,7 @@ public class NIOClient {
                             sc.read(buffer);
                             buffer.flip();
 
-                            String receivedString= new String(buffer.array());
+                            String receivedString = new String(buffer.array());
                             System.out.println(receivedString);
                             buffer.clear();
                             buffer.put(receivedString.getBytes());

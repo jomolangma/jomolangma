@@ -21,6 +21,7 @@
         <module>app-kafka</module>
         <module>app-hadoop</module>
         <module>app-hbase</module>
+        <module>app-spark</module>
     </modules>
 
     <properties>
@@ -28,7 +29,7 @@
         <springVersion>4.1.2.RELEASE</springVersion>
         <jerseyVersion>2.5.1</jerseyVersion>
         <cxfVersion>3.0.0</cxfVersion>
-        <hadoopVersion>2.7.0</hadoopVersion>
+        <hadoopVersion>2.6.0</hadoopVersion>
         <hbaseVersion>1.1.0.1</hbaseVersion>
     </properties>
 
@@ -534,6 +535,11 @@
                 <groupId>org.apache.zookeeper</groupId>
                 <artifactId>zookeeper</artifactId>
                 <version>3.4.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-core_2.10</artifactId>
+                <version>1.4.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
