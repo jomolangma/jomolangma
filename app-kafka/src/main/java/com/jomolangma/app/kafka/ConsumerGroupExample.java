@@ -46,26 +46,27 @@ public class ConsumerGroupExample {
    
     private static ConsumerConfig createConsumerConfig(String a_zookeeper, String a_groupId) {
         Properties props = new Properties();
-        props.put("zookeeper.connect", "192.168.16.8:2181");
+        props.put("zookeeper.connect", a_zookeeper);
         props.put("group.id", a_groupId);
         props.put("zookeeper.session.timeout.ms", "60000");
         props.put("zookeeper.sync.time.ms", "4000");
         props.put("auto.commit.interval.ms", "1000");
+        props.put("auto.offset.reset","smallest");
    
         return new ConsumerConfig(props);
     }  
    
     public static void main(String[] args) {
-        String zooKeeper = "192.168.16.8:2181";
-        String topic = "topic_test_zlj";  
-        String groupId = args[0];
-        int threads = Integer.valueOf(args[1]);
+        String zooKeeper = "192.168.16.5:2182";
+        String topic = "topic_zlj";
+        String groupId = "zlj_test";
+        int threads = 3;
    
         ConsumerGroupExample example = new ConsumerGroupExample(zooKeeper, groupId, topic);  
         example.run(threads);  
    
         try {  
-            Thread.sleep(60000);  
+            Thread.sleep(600000);
         } catch (InterruptedException ie) {  
    
         }
