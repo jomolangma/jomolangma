@@ -52,6 +52,8 @@ public class MainTest {
 
 //		System.out.println(System.getProperty("user.dir"));
 
+		System.out.println(System.getProperty("java.version"));
+
         System.out.println(System.currentTimeMillis());
 
         //Date date = new Date();

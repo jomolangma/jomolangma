@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+<property>
+<name>dfs.permissions.superusergroup</name>
+<value>hadoop</value>
+</property>
+<property>
+<name>dfs.datanode.max.xcievers</name>
+<value>8192</value>
+</property>
+<property>
+<name>dfs.namenode.name.dir</name>
+<value>file:///data/dfs/nn</value>
+</property>
+<property>
+<name>dfs.datanode.data.dir</name>
+<value>file:///data1,file:///data2,file:///data3,file:///data4,file:///data5,file:///data6</value>
+</property>
+<property>
+<name>dfs.replication</name>
+<value>3</value>
+</property>
+<property>
+<name>dfs.permissions.enabled</name>
+<value>false</value>
+</property>
+<property>
+<name>dfs.webhdfs.enabled</name>
+<value>true</value>
+</property>
+<property>
+<name>dfs.namenode.handler.count</name>
+<value>40</value>
+</property>
+
+<!-- 指定hdfs的nameservice为mycluster，需要和core-site.xml中的保持一致 -->
+<property>
+<name>dfs.nameservices</name>
+<value>mycluster</value>
+</property>
+<!-- mycluster下面有两个NameNode，分别是nn1，nn2 -->
+<property>
+<name>dfs.ha.namenodes.mycluster</name>
+<value>nn1,nn2</value>
+</property>
+<property>
+<name>dfs.namenode.hostname.nn1</name>
+<value>hadoop1</value>
+</property>
+<property>
+<name>dfs.namenode.hostname.nn2</name>
+<value>hadoop2</value>
+</property>
+<!-- 指定NameNode读写JournalNode组的uri,格式为qjournal://host1:port1;host2:port2;host3:port3/journalId -->
+<property>
+<name>dfs.namenode.shared.edits.dir</name>
+<value>qjournal://hadoop1:8485;hadoop2:8485;hadoop3:8485/mycluster</value>
+</property>
+<!-- 指定JournalNode在本地磁盘存放数据的位置 -->
+<property>
+<name>dfs.journalnode.edits.dir</name>
+<value>/data/dfs/journal</value>
+</property>
+<!-- 使用隔离机制时需要ssh免密码登陆 -->
+<property>
+<name>dfs.ha.fencing.ssh.private-key-files</name>
+<value>/home/hadoop/.ssh/id_rsa</value>
+</property>
+<!-- nn1和nn2的RPC通信地址 -->
+<property>
+<name>dfs.namenode.rpc-address.mycluster.nn1</name>
+<value>${dfs.namenode.hostname.nn1}:8020</value>
+</property>
+<property>
+<name>dfs.namenode.rpc-address.mycluster.nn2</name>
+<value>${dfs.namenode.hostname.nn2}:8020</value>
+</property>
+<!-- nn1和nn2的http通信地址 -->
+<property>
+<name>dfs.namenode.http-address.mycluster.nn1</name>
+<value>${dfs.namenode.hostname.nn1}:50070</value>
+</property>
+<property>
+<name>dfs.namenode.http-address.mycluster.nn2</name>
+<value>${dfs.namenode.hostname.nn2}:50070</value>
+</property>
+<property>
+<name>dfs.namenode.servicerpc-address.mycluster.nn1</name>
+<value>${dfs.namenode.hostname.nn1}:53310</value>
+</property>
+<property>
+<name>dfs.namenode.servicerpc-address.mycluster.nn2</name>
+<value>${dfs.namenode.hostname.nn2}:53310</value>
+</property>
+<!-- 指定支持高可用自动切换机制 -->
+<property>
+<name>dfs.ha.automatic-failover.enabled</name>
+<value>true</value>
+</property>
+<!-- 指定失败自动切换实现方式 -->
+<property>
+<name>dfs.client.failover.proxy.provider.mycluster</name>
+<value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+</property>
+<!-- 配置隔离机制 -->
+<property>
+<name>dfs.ha.fencing.methods</name>
+<value>sshfence</value>
+</property>
+<property>
+<name>dfs.ha.fencing.ssh.connect-timeout</name>
+<value>1000</value>
+</property>
+
+<property>
+<name>dfs.hosts.exclude</name>
+<value>/opt/hadoop/hadoop-2.5.0-cdh5.2.1/etc/hadoop/excludes</value>
+</property>
+
+</configuration>
