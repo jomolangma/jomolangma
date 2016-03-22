@@ -92,10 +92,6 @@
         </dependency>
         <dependency>
             <groupId>org.apache.hbase</groupId>
-            <artifactId>hbase-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hbase</groupId>
             <artifactId>hbase-examples</artifactId>
         </dependency>
         <dependency>

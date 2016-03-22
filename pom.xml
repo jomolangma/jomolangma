@@ -24,13 +24,20 @@
         <module>app-spark</module>
     </modules>
 
+    <repositories>
+        <repository>
+            <id>cloudera</id>
+            <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+        </repository>
+    </repositories>
+
     <properties>
         <app-version>${project.version}</app-version>
         <springVersion>4.2.5.RELEASE</springVersion>
         <jerseyVersion>2.19</jerseyVersion>
         <hadoopVersion>2.6.0-cdh5.6.0</hadoopVersion>
         <hbaseVersion>1.0.0-cdh5.6.0</hbaseVersion>
-        <zookeeperVersion>3.4.6</zookeeperVersion>
+        <zookeeperVersion>3.4.5-cdh5.6.0</zookeeperVersion>
         	
         <sparkVersion>1.6.1</sparkVersion>
     </properties>
