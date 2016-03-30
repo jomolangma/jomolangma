@@ -7,7 +7,6 @@ import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
-@SuppressWarnings("unused")
 public class Car implements BeanFactoryAware, BeanNameAware, InitializingBean,DisposableBean {
 	private String brand;
 	private String color;
@@ -52,32 +51,27 @@ public class Car implements BeanFactoryAware, BeanNameAware, InitializingBean,Di
 	public void introduce(){
 		System.out.println("introduce:"+this.toString());
 	}
-	
-	
-	// BeanFactoryAware接口方法
+
 	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
 		System.out.println("Call BeanFactoryAware.setBeanFactory()");
 		this.beanFactory = beanFactory;
 	}
 
-	// BeanNameAware接口方法
 	public void setBeanName(String beanName) {
 		System.out.println("Call BeanNameAware.setBeanName()");
 		this.beanName = beanName;
 	}
 
-	// InitializingBean接口方法
 	public void afterPropertiesSet() throws Exception {
 		System.out.println("Call InitializingBean.afterPropertiesSet()");
 	}
 
-	// DisposableBean接口方法
 	public void destroy() throws Exception {
 		System.out.println("Call DisposableBean.destory()");
 	}
 
 	public void myInit() {		
-		System.out.println("Call myInit()，set maxSpeed as 240");
+		System.out.println("Call myInit() set maxSpeed as 240");
 		this.maxSpeed = 240;
 	}
 

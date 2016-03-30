@@ -3,7 +3,7 @@ package com.jomolangma.app.spring.anno;
 public class ForumService {
     @NeedTest(value=true)
 	public void deleteForum(int forumId){
-    	System.out.println("模拟删除Forum模块:"+forumId);
+    	System.out.println("ForumId:"+forumId);
 	}
     /**
      * 
@@ -11,6 +11,6 @@ public class ForumService {
      */
     @NeedTest(value=false)
     public void deleteTopic(int topicId){
-    	System.out.println("模拟删除Forum主题:"+topicId);
+    	System.out.println("topicId:"+topicId);
 	}	
 }

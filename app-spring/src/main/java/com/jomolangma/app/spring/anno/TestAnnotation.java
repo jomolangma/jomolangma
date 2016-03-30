@@ -14,9 +14,9 @@ public class TestAnnotation {
 			NeedTest nt = method.getAnnotation(NeedTest.class);
 			if (nt != null) {
 				if (nt.value()) {
-					System.out.println(method.getName() + "需要测试");
+					System.out.println(method.getName() + "true");
 				} else {
-					System.out.println(method.getName() + "不需要测试");
+					System.out.println(method.getName() + "false");
 				}
 			}
 		}

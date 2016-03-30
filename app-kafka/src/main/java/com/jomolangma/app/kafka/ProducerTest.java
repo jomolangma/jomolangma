@@ -22,7 +22,7 @@ public class ProducerTest {
 		for (int i = 1; i <= 500; i++) {
 			List<KeyedMessage<String, String>> messageList = new ArrayList<KeyedMessage<String, String>>();
 			for (int j = 0; j < 3; j++) {
-				messageList.add(new KeyedMessage<String, String>(
+				messageList.add(new KeyedMessage<>(
 						"topic_zlj", j + "", "The " + i + " message for key " + j));
 			}
 			producer.send(messageList);

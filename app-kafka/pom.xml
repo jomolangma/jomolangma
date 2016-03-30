@@ -16,7 +16,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.kafka</groupId>
-			<artifactId>kafka_2.9.2</artifactId>
+			<artifactId>kafka_2.11</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -31,12 +31,6 @@
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
-					<archive>
-						<manifest>
-							<mainClass>com.alipay.dw.jstorm.example.sequence.SequenceTopology
-							</mainClass>
-						</manifest>
-					</archive>
 				</configuration>
 				<executions>
 					<execution>

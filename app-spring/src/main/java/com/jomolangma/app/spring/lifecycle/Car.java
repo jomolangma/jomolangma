@@ -7,7 +7,6 @@ import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
-@SuppressWarnings("unused")
 public class Car implements BeanFactoryAware, BeanNameAware, InitializingBean,
 		DisposableBean {
 	private String brand;
@@ -18,7 +17,7 @@ public class Car implements BeanFactoryAware, BeanNameAware, InitializingBean,
 	private String beanName;
 
 	public Car() {
-		System.out.println("Car的构造函数");
+		System.out.println("Car");
 	}
 
 	public String getBrand() {
