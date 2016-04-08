@@ -31,7 +31,7 @@
     </repositories>
 
     <properties>
-        <app-version>${project.version}</app-version>
+        <appVersion>${project.version}</appVersion>
         <springVersion>4.2.5.RELEASE</springVersion>
         <jerseyVersion>2.19</jerseyVersion>
         <hadoopVersion>2.6.0-cdh5.6.0</hadoopVersion>
@@ -46,12 +46,12 @@
             <dependency>
                 <groupId>com.jomolangma.app</groupId>
                 <artifactId>app-spring</artifactId>
-                <version>${app-version}</version>
+                <version>${appVersion}</version>
             </dependency>
             <dependency>
                 <groupId>com.jomolangma.app</groupId>
                 <artifactId>app-mybatis</artifactId>
-                <version>${app-version}</version>
+                <version>${appVersion}</version>
             </dependency>
 
             <dependency>
