@@ -34,8 +34,8 @@
         <appVersion>${project.version}</appVersion>
         <springVersion>4.2.5.RELEASE</springVersion>
         <jerseyVersion>2.19</jerseyVersion>
-        <hadoopVersion>2.6.0-cdh5.6.0</hadoopVersion>
-        <hbaseVersion>1.0.0-cdh5.6.0</hbaseVersion>
+        <hadoopVersion>2.6.0-cdh5.7.0</hadoopVersion>
+        <hbaseVersion>1.2.0-cdh5.7.0</hbaseVersion>
         <zookeeperVersion>3.4.5-cdh5.6.0</zookeeperVersion>
         <scalaVersion>2.11.8</scalaVersion>
         <sparkVersion>1.6.1</sparkVersion>
