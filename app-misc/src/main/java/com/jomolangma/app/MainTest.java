@@ -52,9 +52,9 @@ public class MainTest {
 
 //		System.out.println(System.getProperty("user.dir"));
 
-		System.out.println(System.getProperty("java.version"));
-
-        System.out.println(System.currentTimeMillis());
+//		System.out.println(System.getProperty("java.version"));
+//
+//        System.out.println(System.currentTimeMillis());
 
         //Date date = new Date();
 
@@ -84,22 +84,25 @@ public class MainTest {
 
 //		String value = "1234:5255:fwef-fwe:1427773558115";
 //		System.out.println(value.substring(value.lastIndexOf(":")+1));
+//
+//		Date date1 = new Date(115,2,28,12,12,12);
+//		long date1M = date1.getTime();
+//		Date date2 = new Date(115,2,31,12,12,12);
+//		long date2M = date2.getTime();
+//
+//		long expiredDaysMilliSeconds = 2*24*60*60*1000;
+//		System.out.println(expiredDaysMilliSeconds);
+//
+//		if ((date1M + expiredDaysMilliSeconds) < System.currentTimeMillis()){
+//			System.out.println("date1 true");
+//		}
+//
+//		if ((date2M + expiredDaysMilliSeconds) < System.currentTimeMillis()){
+//			System.out.println("date2 true");
+//		}
 
-		Date date1 = new Date(115,2,28,12,12,12);
-		long date1M = date1.getTime();
-		Date date2 = new Date(115,2,31,12,12,12);
-		long date2M = date2.getTime();
-
-		long expiredDaysMilliSeconds = 2*24*60*60*1000;
-		System.out.println(expiredDaysMilliSeconds);
-
-		if ((date1M + expiredDaysMilliSeconds) < System.currentTimeMillis()){
-			System.out.println("date1 true");
-		}
-
-		if ((date2M + expiredDaysMilliSeconds) < System.currentTimeMillis()){
-			System.out.println("date2 true");
-		}
+		System.out.println(System.getProperty("os.name"));
+		System.out.println(System.getProperty("java.version"));
 	}
 
 }

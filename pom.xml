@@ -21,6 +21,7 @@
         <module>app-hadoop</module>
         <module>app-hbase</module>
         <module>app-spark</module>
+        <module>app-zookeeper</module>
     </modules>
 
     <repositories>
@@ -33,12 +34,12 @@
     <properties>
         <appVersion>${project.version}</appVersion>
         <springVersion>4.2.5.RELEASE</springVersion>
-        <jerseyVersion>2.19</jerseyVersion>
+        <jerseyVersion>2.32.2</jerseyVersion>
         <hadoopVersion>2.6.0-cdh5.7.0</hadoopVersion>
         <hbaseVersion>1.2.0-cdh5.7.0</hbaseVersion>
-        <zookeeperVersion>3.4.5-cdh5.6.0</zookeeperVersion>
+        <zookeeperVersion>3.4.5-cdh5.7.0</zookeeperVersion>
         <scalaVersion>2.11.8</scalaVersion>
-        <sparkVersion>1.6.1</sparkVersion>
+        <sparkVersion>2.0.0</sparkVersion>
         <akkaVersion>2.4.3</akkaVersion>
     </properties>
 
@@ -231,11 +232,6 @@
                 <version>5.8.0</version>
             </dependency>
             <dependency>
-                <groupId>org.jboss.resteasy</groupId>
-                <artifactId>resteasy-jaxrs</artifactId>
-                <version>2.3.4.Final</version>
-            </dependency>
-            <dependency>
                 <groupId>javax.jms</groupId>
                 <artifactId>jms</artifactId>
                 <version>1.1</version>
@@ -243,11 +239,26 @@
             <dependency>
                 <groupId>javax.ws.rs</groupId>
                 <artifactId>javax.ws.rs-api</artifactId>
-                <version>2.0</version>
+                <version>2.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.containers</groupId>
+                <artifactId>jersey-container-servlet-core</artifactId>
+                <version>${jerseyVersion}</version>
             </dependency>
             <dependency>
                 <groupId>org.glassfish.jersey.containers</groupId>
                 <artifactId>jersey-container-servlet</artifactId>
+                <version>${jerseyVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.containers</groupId>
+                <artifactId>jersey-container-grizzly2-servlet</artifactId>
+                <version>${jerseyVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.containers</groupId>
+                <artifactId>jersey-container-grizzly2-http</artifactId>
                 <version>${jerseyVersion}</version>
             </dependency>
             <dependency>
@@ -270,6 +281,24 @@
                 <artifactId>jersey-apache-connector</artifactId>
                 <version>${jerseyVersion}</version>
             </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.ext</groupId>
+                <artifactId>jersey-spring3</artifactId>
+                <version>${jerseyVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.test-framework</groupId>
+                <artifactId>jersey-test-framework-core</artifactId>
+                <version>${jerseyVersion}</version>
+            </dependency>
+
+            <!-- Jersey test containers -->
+            <dependency>
+                <groupId>org.glassfish.jersey.test-framework.providers</groupId>
+                <artifactId>jersey-test-framework-provider-grizzly2</artifactId>
+                <version>${jerseyVersion}</version>
+            </dependency>
+
             <dependency>
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
@@ -513,11 +542,14 @@
                 <artifactId>hbase-hadoop2-compat</artifactId>
                 <version>${hbaseVersion}</version>
             </dependency>
+            
+            <!-- zookeeper -->
             <dependency>
                 <groupId>org.apache.zookeeper</groupId>
                 <artifactId>zookeeper</artifactId>
                 <version>${zookeeperVersion}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.scala-lang</groupId>
                 <artifactId>scala-library</artifactId>
@@ -548,6 +580,7 @@
                 <artifactId>scalap</artifactId>
                 <version>${scalaVersion}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.apache.spark</groupId>
                 <artifactId>spark-core_2.11</artifactId>
@@ -560,7 +593,7 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.spark</groupId>
-                <artifactId>spark-yarn_2.10</artifactId>
+                <artifactId>spark-yarn_2.11</artifactId>
                 <version>${sparkVersion}</version>
             </dependency>
             <dependency>
@@ -580,165 +613,145 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.spark</groupId>
+                <artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
+                <version>${sparkVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
                 <artifactId>spark-mllib_2.11</artifactId>
                 <version>${sparkVersion}</version>
             </dependency>
+
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-actor_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-agent_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-camel_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-cluster_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-cluster-metrics_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-cluster-sharding_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-cluster-tools_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-contrib_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-http-core_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-http-testkit_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-multi-node-testkit_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-osgi_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-persistence_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-persistence-tck_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-remote_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-slf4j_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-stream_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-stream-testkit_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-testkit_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-distributed-data-experimental_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-typed-experimental_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-http-experimental_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-http-jackson-experimental_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-http-spray-json-experimental_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-http-xml-experimental_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-persistence-query-experimental_2.11</artifactId>
                 <version>${akkaVersion}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-typed-experimental_2.11</artifactId>
