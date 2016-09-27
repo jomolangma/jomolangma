@@ -11,7 +11,7 @@ import kafka.producer.ProducerConfig;
 public class ProducerTest {
 	public static void main(String[] args) throws InterruptedException {
 		Properties props = new Properties();
-		props.put("metadata.broker.list", "192.168.16.5:9093");
+		props.put("metadata.broker.list", "node1:9092");
 		props.put("serializer.class", "kafka.serializer.StringEncoder");
 		props.put("partitioner.class", "com.jomolangma.app.kafka.CustomerPartitioner");
 		props.put("request.required.acks", "1");
@@ -21,9 +21,9 @@ public class ProducerTest {
 
 		for (int i = 1; i <= 500; i++) {
 			List<KeyedMessage<String, String>> messageList = new ArrayList<KeyedMessage<String, String>>();
-			for (int j = 0; j < 3; j++) {
+			for (int j = 0; j < 4; j++) {
 				messageList.add(new KeyedMessage<>(
-						"topic_zlj", j + "", "The " + i + " message for key " + j));
+						"kafka_zhanglijun", j + "", "The " + i + " message for key " + j));
 			}
 			producer.send(messageList);
 

@@ -57,16 +57,16 @@ public class ConsumerGroupExample {
     }  
    
     public static void main(String[] args) {
-        String zooKeeper = "192.168.16.5:2182";
-        String topic = "topic_zlj";
+        String zooKeeper = "node1:2181";
+        String topic = "kafka_zhanglijun";
         String groupId = "zlj_test";
-        int threads = 3;
+        int threads = 4;
    
         ConsumerGroupExample example = new ConsumerGroupExample(zooKeeper, groupId, topic);  
         example.run(threads);  
    
         try {  
-            Thread.sleep(600000);
+            Thread.sleep(60000);
         } catch (InterruptedException ie) {  
    
         }

@@ -5,9 +5,10 @@ import kafka.utils.VerifiableProperties;
 
 public class CustomerPartitioner implements Partitioner {
 
-	public CustomerPartitioner(VerifiableProperties verifiableProperties) {}
-	
-	@Override
+    public CustomerPartitioner(VerifiableProperties verifiableProperties) {
+    }
+
+    @Override
     public int partition(Object key, int numPartitions) {
         try {
             int partitionNum = Integer.parseInt((String) key);
